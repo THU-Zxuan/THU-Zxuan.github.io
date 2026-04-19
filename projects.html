@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>科研经历 | 钟轩</title>
+<meta name="description" content="钟轩的科研项目详情，包含储能优化、LSTM预测、嵌入式开发等方向。">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:36px}
+.tl::before{
+  content:'';position:absolute;left:7px;top:8px;bottom:8px;
+  width:2px;background:linear-gradient(to bottom,var(--P),var(--P3),transparent);
+  border-radius:2px;
+}
+.tl-item{position:relative;margin-bottom:32px}
+.tl-dot{
+  position:absolute;left:-36px;top:18px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--P);border:3px solid var(--Pp2);
+  box-shadow:0 0 0 4px rgba(91,45,142,.12);
+  transition:transform .2s;
+}
+.tl-item:hover .tl-dot{transform:scale(1.3)}
+
+/* ── PROJECT CARD ── */
+.proj-card{padding:28px 30px}
+.proj-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:14px;margin-bottom:10px;
+}
+.proj-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:1.05rem;font-weight:700;color:var(--dark);line-height:1.4;
+}
+.proj-badge{
+  font-size:.72rem;font-weight:700;
+  padding:4px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;
+}
+.badge-active{background:#E8F5E9;color:#2E7D32}
+.badge-done{background:var(--Pp);color:var(--P)}
+
+.proj-meta{
+  display:flex;gap:16px;flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.proj-meta-item{
+  display:flex;align-items:center;gap:5px;
+  font-size:.78rem;color:var(--muted);
+}
+.proj-desc{
+  font-size:.88rem;color:var(--txt);line-height:1.85;
+  margin-bottom:16px;
+}
+.proj-bullets{
+  margin-bottom:16px;padding-left:16px;
+  list-style:none;
+}
+.proj-bullets li{
+  font-size:.85rem;color:var(--txt);line-height:1.7;
+  margin-bottom:6px;position:relative;
+}
+.proj-bullets li::before{
+  content:'▸';color:var(--P);
+  position:absolute;left:-14px;
+}
+.proj-tags{display:flex;flex-wrap:wrap;gap:7px}
+.proj-tag{
+  font-size:.73rem;color:var(--P2);
+  background:var(--Pp);border-radius:20px;
+  padding:3px 12px;font-weight:600;
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* ── OUTCOMES ── */
+.outcome-row{
+  display:flex;gap:10px;flex-wrap:wrap;
+  margin-top:14px;padding-top:14px;
+  border-top:1px dashed var(--border);
+}
+.outcome{
+  display:flex;align-items:center;gap:6px;
+  font-size:.78rem;background:var(--Pp);
+  color:var(--P);padding:4px 12px;border-radius:8px;font-weight:600;
+}
+
+/* ── FILTER ── */
+.filter-bar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;
+}
+.filter-btn{
+  padding:6px 18px;border-radius:20px;
+  font-size:.82rem;font-weight:600;
+  border:1.5px solid var(--border);background:var(--card);
+  color:var(--muted);cursor:pointer;transition:all .2s;
+  font-family:inherit;
+}
+.filter-btn.on{background:var(--P);color:#fff;border-color:var(--P)}
+.filter-btn:hover:not(.on){border-color:var(--P);color:var(--P)}
+
+@media(max-width:600px){
+  .proj-header{flex-direction:column;gap:8px}
+  .proj-card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">钟轩 <em>|</em> 清华大学</a>
+  <ul class="nav-links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="projects.html">科研经历</a></li>
+    <li><a href="awards.html">成果与荣誉</a></li>
+    <li><a href="blog.html">随笔与设计</a></li>
+    <li><a href="contact.html">联系</a></li>
+  </ul>
+  <button class="hamburger" id="hb"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mm">
+  <a href="index.html">首页</a>
+  <a href="projects.html">科研经历</a>
+  <a href="awards.html">成果与荣誉</a>
+  <a href="blog.html">随笔与设计</a>
+  <a href="contact.html">联系</a>
+</div>
+
+<div class="page">
+
+<div class="page-banner">
+  <div class="page-banner-inner">
+    <div class="breadcrumb"><a href="index.html">首页</a> › 科研经历</div>
+    <h1>科研经历</h1>
+    <p>4个项目 · 涵盖储能优化、热力学建模、AI预测、嵌入式信号处理</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="sec">
+
+    <div class="filter-bar fi">
+      <button class="filter-btn on" onclick="filterProj('all',this)">全部</button>
+      <button class="filter-btn" onclick="filterProj('ai',this)">AI · 机器学习</button>
+      <button class="filter-btn" onclick="filterProj('opt',this)">优化 · 电力市场</button>
+      <button class="filter-btn" onclick="filterProj('embed',this)">嵌入式 · DSP</button>
+    </div>
+
+    <div class="tl" id="proj-list">
+
+      <!-- P1 -->
+      <div class="tl-item fi" data-cat="ai">
+        <div class="tl-dot"></div>
+        <div class="card proj-card">
+          <div class="proj-header">
+            <div class="proj-title">学推项目 — 动态可重构电池储能系统（DRBN）跨温域价值分析与智能运营技术</div>
+            <span class="proj-badge badge-active">进行中</span>
+          </div>
+          <div class="proj-meta">
+            <span class="proj-meta-item">📅 2026.04 — 至今</span>
+            <span class="proj-meta-item">🏛️ 电机工程与应用电子技术系</span>
+          </div>
+          <p class="proj-desc">
+            在动态可重构电池网络（DRBN）框架下，研究跨温域场景下的储能系统价值分析与智能运营策略，核心工作聚焦于电池状态联合估计与运营策略优化。
+          </p>
+          <ul class="proj-bullets">
+            <li>负责SOC–SOH协同预测算法开发，基于LSTM+注意力机制构建联合状态估计模型，提升预测精度与泛化能力。</li>
+            <li>探索温度域对电池性能的影响，建立跨温域场景下的寿命衰减与收益量化模型。</li>
+            <li>已申请发明专利1项（受理中），相关论文投稿ACDC国际会议（在审）。</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">#DRBN</span>
+            <span class="proj-tag">#LSTM</span>
+            <span class="proj-tag">#注意力机制</span>
+            <span class="proj-tag">#SOC-SOH协同预测</span>
+            <span class="proj-tag">#深度强化学习</span>
+            <span class="proj-tag">#电池老化</span>
+          </div>
+          <div class="outcome-row">
+            <span class="outcome">📜 发明专利受理（2026）</span>
+            <span class="outcome">📄 论文投稿ACDC（在审）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="tl-item fi" data-cat="opt">
+        <div class="tl-dot"></div>
+        <div class="card proj-card">
+          <div class="proj-header">
+            <div class="proj-title">SRT学生立项 — 面向电力市场的储能系统热力学特性建模与应用研究</div>
+            <span class="proj-badge badge-active">进行中</span>
+          </div>
+          <div class="proj-meta">
+            <span class="proj-meta-item">📅 2026.03 — 至今</span>
+            <span class="proj-meta-item">🏛️ 电机工程与应用电子技术系</span>
+          </div>
+          <p class="proj-desc">
+            建立储能系统热力学特性精细化模型，分析电池在电力市场调峰调频等应用场景下的热效应，为优化调度策略提供物理约束基础。
+          </p>
+          <ul class="proj-bullets">
+            <li>构建锂离子电池热产生、传导与散热的多物理场耦合模型。</li>
+            <li>研究不同气候环境下的热管理策略对电池寿命与市场收益的影响。</li>
+            <li>将热力学约束嵌入电力市场优化调度模型，实现物理可行的最优运营策略。</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">#热力学建模</span>
+            <span class="proj-tag">#电力市场</span>
+            <span class="proj-tag">#多物理场耦合</span>
+            <span class="proj-tag">#MILP</span>
+            <span class="proj-tag">#调峰调频</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="tl-item fi" data-cat="opt">
+        <div class="tl-dot"></div>
+        <div class="card proj-card">
+          <div class="proj-header">
+            <div class="proj-title">挑战杯项目 — 计及环境物理特性的储能系统运行优化与收益量化</div>
+            <span class="proj-badge badge-done">已完成</span>
+          </div>
+          <div class="proj-meta">
+            <span class="proj-meta-item">📅 2025.11 — 2026.03</span>
+            <span class="proj-meta-item">🏆 挑战杯校赛 优胜奖</span>
+          </div>
+          <p class="proj-desc">
+            综合考虑气候带、环境温度对储能系统性能的物理影响，构建能量-温度协同优化模型，系统量化不同地区场景下的储能收益。
+          </p>
+          <ul class="proj-bullets">
+            <li>建立计及热管理约束的混合整数线性规划（MILP）调度模型，使用Gurobi求解。</li>
+            <li>对比分析寒带、温带、热带等不同气候带下储能系统的盈利能力与运行策略差异。</li>
+            <li>量化环境温度对充放电效率、电池寿命及全生命周期收益的影响，获校赛优胜奖。</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">#MILP</span>
+            <span class="proj-tag">#Gurobi</span>
+            <span class="proj-tag">#热管理</span>
+            <span class="proj-tag">#电力市场</span>
+            <span class="proj-tag">#收益量化</span>
+            <span class="proj-tag">#跨气候带</span>
+          </div>
+          <div class="outcome-row">
+            <span class="outcome">🏆 挑战杯校赛优胜奖</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="tl-item fi" data-cat="embed">
+        <div class="tl-dot"></div>
+        <div class="card proj-card">
+          <div class="proj-header">
+            <div class="proj-title">SRT项目 — 超高参数电站锅炉管道微裂纹萌生与扩展机制研究</div>
+            <span class="proj-badge badge-done">已完成</span>
+          </div>
+          <div class="proj-meta">
+            <span class="proj-meta-item">📅 2025.03 — 2025.09</span>
+            <span class="proj-meta-item">🏛️ 电机工程与应用电子技术系</span>
+          </div>
+          <p class="proj-desc">
+            研究超高参数电站（超超临界机组）锅炉管道在高温高压服役环境下的微裂纹萌生规律与扩展机制，为电站设备健康评估提供理论支撑。
+          </p>
+          <ul class="proj-bullets">
+            <li>完成项目前期文献调研，系统梳理微裂纹损伤力学相关理论与实验方法。</li>
+            <li>参与实验数据采集与处理，积累科研实验基本技能。</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">#断裂力学</span>
+            <span class="proj-tag">#疲劳裂纹</span>
+            <span class="proj-tag">#高温材料</span>
+            <span class="proj-tag">#超高参数电站</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tl -->
+  </section>
+</div>
+
+</div><!-- /page -->
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-copy">© 2026 <strong>钟轩</strong> · 基于个人兴趣设计</div>
+      <div class="foot-update">最后更新：2026年4月</div>
+    </div>
+    <div class="foot-links">
+      <a href="#" title="GitHub">⚙️</a>
+      <a href="mailto:zhong-x23@mails.tsinghua.edu.cn" title="Email">✉️</a>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+function filterProj(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.tl-item').forEach(item=>{
+    const show = cat==='all' || item.dataset.cat===cat;
+    item.style.display = show ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>

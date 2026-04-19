@@ -2,1057 +2,342 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>钟轩 | 清华大学本科生</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="钟轩，清华大学电机工程与应用电子技术系2023级本科生，专注AI与储能系统交叉研究。">
+<link rel="stylesheet" href="style.css">
 <style>
-  :root {
-    --primary: #5B2D8E;
-    --primary-light: #7B4DB0;
-    --primary-pale: #F3EEFF;
-    --primary-pale2: #EDE6FB;
-    --accent: #C084FC;
-    --dark: #1A1028;
-    --text: #2D1F45;
-    --text-muted: #7A6B8E;
-    --text-light: #A99BBF;
-    --border: #E8E0F5;
-    --bg: #FAFAF8;
-    --card: #FFFFFF;
-    --shadow: 0 2px 20px rgba(91,45,142,0.08);
-    --shadow-hover: 0 8px 32px rgba(91,45,142,0.16);
-    --nav-h: 64px;
-  }
+/* ── INDEX-ONLY STYLES ── */
+.hero{
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;padding:72px 44px 56px;
+  display:grid;grid-template-columns:58% 42%;gap:44px;align-items:center;
+}
+.hero-eyebrow{
+  font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  color:var(--P);text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--P);border-radius:2px}
+.hero-name{
+  font-family:'Noto Serif SC',serif;
+  font-size:clamp(2.8rem,5vw,4rem);
+  font-weight:700;color:var(--dark);
+  line-height:1.1;margin-bottom:12px;
+  letter-spacing:-.01em;
+}
+.hero-sub{
+  font-size:.92rem;color:var(--muted);margin-bottom:22px;
+  line-height:1.6;border-left:3px solid var(--P);
+  padding-left:12px;
+}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.hero-bio{
+  font-size:.92rem;color:var(--txt);line-height:1.85;
+  margin-bottom:30px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+.hero-right{text-align:center}
+.avatar-wrap{
+  width:170px;height:170px;border-radius:50%;
+  margin:0 auto 16px;
+  background:linear-gradient(135deg,var(--Pp),var(--Pp2));
+  border:5px solid var(--Pp2);
+  box-shadow:0 12px 40px rgba(91,45,142,.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;
+  overflow:hidden;
+}
+.avatar-wrap img{width:100%;height:100%;object-fit:cover}
+.motto{
+  font-size:.82rem;color:var(--muted);
+  font-style:italic;line-height:1.6;
+  max-width:200px;margin:0 auto;
+}
+.social-bar{
+  max-width:1100px;margin:0 auto;
+  padding:0 44px 44px;
+  display:flex;gap:20px;flex-wrap:wrap;
+}
+.soc-link{
+  display:flex;align-items:center;gap:8px;
+  text-decoration:none;font-size:.83rem;
+  color:var(--muted);font-weight:500;transition:color .2s;
+}
+.soc-link:hover{color:var(--P)}
+.soc-icon{
+  width:32px;height:32px;background:var(--Pp);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;transition:background .2s;
+}
+.soc-link:hover .soc-icon{background:var(--P);color:#fff;font-size:.85rem}
 
-  html { scroll-behavior: smooth; }
+/* ── STATS ROW ── */
+.stats-bar{
+  background:var(--P);padding:28px 44px;
+}
+.stats-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.stat{text-align:center;padding:8px 0;position:relative}
+.stat+.stat::before{
+  content:'';position:absolute;left:0;top:15%;bottom:15%;
+  width:1px;background:rgba(255,255,255,.2);
+}
+.stat-n{
+  font-family:'Noto Serif SC',serif;
+  font-size:2rem;font-weight:700;color:#fff;line-height:1;
+  margin-bottom:6px;
+}
+.stat-l{font-size:.78rem;color:rgba(255,255,255,.65);font-weight:500}
 
-  body {
-    font-family: 'DM Sans', 'Noto Serif SC', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+/* ── EDU ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.edu-card{padding:28px}
+.edu-logo{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--P),var(--P3));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;margin-bottom:14px;
+}
+.edu-school{
+  font-family:'Noto Serif SC',serif;
+  font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:4px;
+}
+.edu-dept{font-size:.83rem;color:var(--P);font-weight:600;margin-bottom:14px}
+.edu-row{
+  font-size:.83rem;color:var(--muted);margin-bottom:6px;
+  display:flex;align-items:baseline;gap:6px;
+}
+.edu-row strong{color:var(--txt);min-width:52px;flex-shrink:0}
+.sk-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.sk-lbl{font-size:.74rem;color:var(--muted);font-weight:700;min-width:60px}
+.sk-chip{
+  background:var(--Pp);color:var(--txt);
+  border-radius:6px;padding:3px 10px;
+  font-size:.74rem;font-family:'JetBrains Mono',monospace;
+  border:1px solid var(--border);transition:border-color .2s,color .2s;
+}
+.sk-chip:hover{border-color:var(--P);color:var(--P)}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    height: var(--nav-h);
-    display: flex; align-items: center;
-    padding: 0 40px;
-    justify-content: space-between;
-    transition: box-shadow .3s;
-  }
-  nav.scrolled { box-shadow: 0 2px 24px rgba(91,45,142,0.10); }
+/* ── QUICK RESEARCH PREVIEW ── */
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prev-card{padding:22px 20px;border-left:4px solid var(--P);border-radius:0 var(--r) var(--r) 0}
+.prev-num{
+  font-size:2rem;font-weight:700;color:var(--Pp2);
+  font-family:'Noto Serif SC',serif;margin-bottom:8px;
+  background:linear-gradient(135deg,var(--P),var(--P3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.prev-title{font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:6px;line-height:1.4}
+.prev-time{font-size:.74rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
 
-  .nav-logo {
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--dark);
-    letter-spacing: .02em;
-    white-space: nowrap;
-  }
-  .nav-logo span { color: var(--primary); }
-
-  .nav-links {
-    display: flex; gap: 30px; list-style: none;
-    align-items: center;
-  }
-  .nav-links a {
-    text-decoration: none;
-    font-size: .9rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    transition: color .2s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -4px; left: 0; right: 0;
-    height: 2px; background: var(--primary);
-    transform: scaleX(0); transition: transform .2s;
-    border-radius: 2px;
-  }
-  .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
-
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px;
-    cursor: pointer; background: none; border: none; padding: 4px;
-  }
-  .hamburger span {
-    display: block; width: 24px; height: 2px;
-    background: var(--dark); border-radius: 2px;
-    transition: all .3s;
-  }
-
-  .mobile-menu {
-    display: none;
-    position: fixed; top: var(--nav-h); left: 0; right: 0;
-    background: #fff; border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
-    flex-direction: column; gap: 16px;
-    z-index: 998;
-    box-shadow: 0 8px 24px rgba(91,45,142,0.10);
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    text-decoration: none; color: var(--text);
-    font-size: 1rem; font-weight: 500;
-    padding: 8px 0; border-bottom: 1px solid var(--border);
-  }
-
-  /* ── WRAPPER ── */
-  .page { padding-top: var(--nav-h); }
-
-  /* ── SECTION COMMON ── */
-  section {
-    padding: 70px 40px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .section-full {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 0;
-  }
-  .section-full > section { padding: 70px 40px; }
-
-  .section-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 40px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .section-title::before {
-    content: '';
-    display: block; width: 4px; height: 1.5em;
-    background: linear-gradient(to bottom, var(--primary), var(--accent));
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-
-  /* ── HERO ── */
-  #hero-section {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-inner {
-    max-width: 1100px; margin: 0 auto;
-    padding: 70px 40px 60px;
-    display: grid; grid-template-columns: 60% 40%;
-    gap: 40px; align-items: center;
-  }
-  .hero-name {
-    font-family: 'Noto Serif SC', serif;
-    font-size: clamp(2.4rem, 5vw, 3.4rem);
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.15;
-    margin-bottom: 10px;
-  }
-  .hero-sub {
-    font-size: .95rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    font-weight: 400;
-  }
-  .tags {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-bottom: 22px;
-  }
-  .tag {
-    background: var(--primary-pale);
-    color: var(--primary);
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: .8rem;
-    font-weight: 500;
-    transition: background .2s, color .2s;
-  }
-  .tag:hover { background: var(--primary); color: #fff; }
-
-  .hero-bio {
-    font-size: .95rem;
-    color: var(--text);
-    line-height: 1.8;
-    margin-bottom: 28px;
-  }
-  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn {
-    padding: 10px 26px;
-    border-radius: 8px;
-    font-size: .9rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all .2s;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .btn-primary {
-    background: var(--primary);
-    color: #fff;
-    border: 2px solid var(--primary);
-  }
-  .btn-primary:hover { background: var(--primary-light); border-color: var(--primary-light); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-  }
-  .btn-outline:hover { background: var(--primary-pale); transform: translateY(-1px); }
-
-  .hero-right { text-align: center; }
-  .hero-photo {
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-pale);
-    box-shadow: 0 8px 32px rgba(91,45,142,0.15);
-    margin-bottom: 14px;
-  }
-  .hero-photo-placeholder {
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-pale), var(--primary-pale2));
-    border: 4px solid var(--primary-pale);
-    box-shadow: 0 8px 32px rgba(91,45,142,0.15);
-    margin: 0 auto 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
-  }
-  .hero-motto {
-    font-size: .82rem;
-    color: var(--text-muted);
-    font-style: italic;
-    line-height: 1.5;
-  }
-
-  .social-row {
-    max-width: 1100px; margin: 0 auto;
-    padding: 0 40px 40px;
-    display: flex; gap: 18px;
-  }
-  .social-link {
-    display: flex; align-items: center; gap: 7px;
-    text-decoration: none;
-    font-size: .85rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    transition: color .2s;
-  }
-  .social-link:hover { color: var(--primary); }
-  .social-icon {
-    width: 32px; height: 32px;
-    background: var(--primary-pale);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    transition: background .2s;
-  }
-  .social-link:hover .social-icon { background: var(--primary-pale2); }
-
-  /* ── EDU ── */
-  .edu-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-  }
-  .edu-card {
-    background: var(--primary-pale);
-    border-radius: 14px;
-    padding: 28px 28px;
-    border: 1px solid var(--border);
-  }
-  .edu-school {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.1rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 6px;
-  }
-  .edu-dept {
-    font-size: .88rem; color: var(--primary);
-    font-weight: 500; margin-bottom: 12px;
-  }
-  .edu-item {
-    font-size: .88rem; color: var(--text-muted);
-    margin-bottom: 6px;
-    display: flex; align-items: baseline; gap: 6px;
-  }
-  .edu-item strong { color: var(--text); }
-  .skills-block { display: flex; flex-direction: column; gap: 10px; }
-  .skill-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .skill-label {
-    font-size: .78rem; color: var(--text-muted); font-weight: 600;
-    min-width: 80px;
-  }
-  .skill-tag {
-    background: #fff;
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 6px;
-    padding: 3px 10px;
-    font-size: .78rem;
-    font-family: 'JetBrains Mono', monospace;
-    transition: border-color .2s, color .2s;
-  }
-  .skill-tag:hover { border-color: var(--primary); color: var(--primary); }
-
-  /* ── RESEARCH ── */
-  .research-list { display: flex; flex-direction: column; gap: 18px; }
-  .r-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 26px 28px;
-    box-shadow: var(--shadow);
-    transition: transform .2s, box-shadow .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .r-card::before {
-    content: '';
-    position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-    background: linear-gradient(to bottom, var(--primary), var(--accent));
-    border-radius: 4px 0 0 4px;
-  }
-  .r-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-  .r-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 12px; margin-bottom: 10px;
-  }
-  .r-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1rem; font-weight: 700; color: var(--dark);
-  }
-  .r-time {
-    font-size: .78rem; color: var(--text-light);
-    white-space: nowrap; font-family: 'JetBrains Mono', monospace;
-    background: var(--primary-pale); padding: 3px 10px;
-    border-radius: 6px; flex-shrink: 0;
-  }
-  .r-group {
-    font-size: .82rem; color: var(--primary); font-weight: 500; margin-bottom: 10px;
-  }
-  .r-desc {
-    font-size: .88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px;
-  }
-  .r-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-  .r-tag {
-    font-size: .75rem; color: var(--primary-light);
-    background: var(--primary-pale); border-radius: 20px;
-    padding: 3px 12px; font-weight: 500;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* ── PUBLICATIONS ── */
-  .pub-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;
-  }
-  .pub-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 24px 24px;
-    box-shadow: var(--shadow);
-    transition: transform .2s, box-shadow .2s;
-  }
-  .pub-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-  .pub-type {
-    font-size: .72rem; color: var(--primary); font-weight: 600;
-    text-transform: uppercase; letter-spacing: .08em;
-    background: var(--primary-pale); padding: 3px 10px;
-    border-radius: 20px; display: inline-block; margin-bottom: 12px;
-  }
-  .pub-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: .95rem; font-weight: 700; color: var(--dark);
-    line-height: 1.5; margin-bottom: 8px;
-  }
-  .pub-meta {
-    font-size: .8rem; color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .awards-row {
-    display: flex; flex-wrap: wrap; gap: 12px;
-  }
-  .award-chip {
-    background: var(--primary-pale2); border: 1px solid var(--border);
-    border-radius: 10px; padding: 10px 18px;
-    font-size: .85rem; color: var(--text);
-    display: flex; align-items: center; gap: 8px;
-    transition: transform .2s;
-  }
-  .award-chip:hover { transform: translateY(-2px); }
-  .award-chip .aw-icon { font-size: 1.1rem; }
-  .award-chip .aw-name { font-weight: 600; color: var(--dark); font-size: .82rem; }
-  .award-chip .aw-year { font-size: .75rem; color: var(--text-muted); }
-
-  /* ── HONORS ── */
-  .honor-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-  }
-  .honor-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 20px 18px;
-    box-shadow: var(--shadow);
-    transition: transform .2s, box-shadow .2s;
-  }
-  .honor-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-  .honor-icon { font-size: 1.6rem; margin-bottom: 8px; }
-  .honor-name { font-weight: 700; color: var(--dark); font-size: .9rem; margin-bottom: 4px; }
-  .honor-year { font-size: .78rem; color: var(--primary); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
-  .honor-org { font-size: .78rem; color: var(--text-muted); }
-
-  /* ── SKILLS ── */
-  .skills-section .skill-category { margin-bottom: 28px; }
-  .skill-cat-title {
-    font-size: .82rem; font-weight: 700; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: .1em;
-    margin-bottom: 12px;
-  }
-  .skill-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
-  .skill-bubble {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 7px 16px;
-    font-size: .85rem; font-weight: 500; color: var(--text);
-    cursor: default; transition: all .2s;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .skill-bubble:hover {
-    background: var(--primary); color: #fff; border-color: var(--primary);
-    transform: translateY(-2px); box-shadow: 0 4px 16px rgba(91,45,142,0.2);
-  }
-
-  /* ── BLOG ── */
-  .blog-tabs {
-    display: flex; gap: 4px; margin-bottom: 32px;
-    border-bottom: 1px solid var(--border);
-  }
-  .blog-tab {
-    padding: 8px 20px;
-    background: none; border: none; border-bottom: 2px solid transparent;
-    font-size: .9rem; font-weight: 500; color: var(--text-muted);
-    cursor: pointer; transition: all .2s; margin-bottom: -1px;
-  }
-  .blog-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
-  .blog-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-  }
-  .blog-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 24px 24px;
-    box-shadow: var(--shadow);
-    transition: transform .2s, box-shadow .2s;
-  }
-  .blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-  .blog-emoji { font-size: 1.2rem; margin-bottom: 10px; }
-  .blog-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: .95rem; font-weight: 700; color: var(--dark);
-    margin-bottom: 8px; line-height: 1.4;
-  }
-  .blog-date {
-    font-size: .75rem; color: var(--text-light);
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 10px;
-  }
-  .blog-excerpt { font-size: .85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; }
-  .blog-footer { display: flex; justify-content: space-between; align-items: center; }
-  .blog-tag {
-    font-size: .72rem; color: var(--primary); background: var(--primary-pale);
-    padding: 3px 10px; border-radius: 20px;
-  }
-  .blog-more {
-    font-size: .82rem; color: var(--primary); text-decoration: none;
-    font-weight: 600; transition: gap .2s;
-    display: flex; align-items: center; gap: 4px;
-  }
-  .blog-more:hover { gap: 8px; }
-  .load-more {
-    text-align: center; margin-top: 28px;
-  }
-
-  /* ── CONTACT ── */
-  .contact-wrapper {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-  }
-  .contact-info {
-    background: var(--primary-pale);
-    border-radius: 16px; padding: 32px 28px;
-    border: 1px solid var(--border);
-  }
-  .contact-item {
-    display: flex; align-items: flex-start; gap: 14px;
-    margin-bottom: 22px;
-  }
-  .contact-item:last-child { margin-bottom: 0; }
-  .contact-icon {
-    width: 38px; height: 38px;
-    background: #fff; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(91,45,142,0.08);
-  }
-  .contact-text { flex: 1; }
-  .contact-label { font-size: .75rem; color: var(--text-muted); font-weight: 600; margin-bottom: 2px; }
-  .contact-value { font-size: .9rem; color: var(--dark); font-weight: 500; }
-  .contact-value a { color: var(--primary); text-decoration: none; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 14px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-label { font-size: .82rem; font-weight: 600; color: var(--text-muted); }
-  .form-input {
-    padding: 10px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px; font-size: .9rem;
-    font-family: inherit; color: var(--text);
-    background: var(--card);
-    transition: border-color .2s;
-    outline: none;
-  }
-  .form-input:focus { border-color: var(--primary); }
-  textarea.form-input { resize: vertical; min-height: 100px; }
-  .form-submit {
-    background: var(--primary); color: #fff; border: none;
-    border-radius: 8px; padding: 12px 28px;
-    font-size: .9rem; font-weight: 600; cursor: pointer;
-    font-family: inherit; transition: background .2s, transform .2s;
-    align-self: flex-start;
-  }
-  .form-submit:hover { background: var(--primary-light); transform: translateY(-1px); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #1A1028;
-    color: #A99BBF;
-    padding: 40px 40px;
-  }
-  .footer-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 16px;
-  }
-  .footer-copy { font-size: .85rem; }
-  .footer-copy strong { color: #fff; }
-  .footer-social { display: flex; gap: 12px; }
-  .footer-social a {
-    width: 36px; height: 36px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    text-decoration: none; font-size: .95rem;
-    transition: background .2s;
-  }
-  .footer-social a:hover { background: var(--primary); }
-  .footer-update { font-size: .8rem; color: #6A5A80; }
-
-  /* ── BG DECORATION ── */
-  .bg-decoration {
-    position: absolute; pointer-events: none; z-index: 0;
-    opacity: .04; overflow: hidden;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 800px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-right { order: -1; }
-    section { padding: 50px 20px; }
-    .section-full > section { padding: 50px 20px; }
-    .edu-grid { grid-template-columns: 1fr; }
-    .pub-grid { grid-template-columns: 1fr; }
-    .honor-grid { grid-template-columns: 1fr 1fr; }
-    .blog-grid { grid-template-columns: 1fr; }
-    .contact-wrapper { grid-template-columns: 1fr; }
-    .social-row { padding: 0 20px 30px; }
-    footer { padding: 30px 20px; }
-    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-  }
-  @media (max-width: 480px) {
-    .honor-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ── FADE IN ── */
-  .fade-in {
-    opacity: 0; transform: translateY(22px);
-    transition: opacity .6s ease, transform .6s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+/* ── RESP ── */
+@media(max-width:800px){
+  .hero-inner{grid-template-columns:1fr;padding:48px 20px 36px;gap:28px}
+  .hero-right{order:-1}
+  .social-bar{padding:0 20px 32px}
+  .stats-bar{padding:20px}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat+.stat::before{display:none}
+  .edu-grid{grid-template-columns:1fr}
+  .preview-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="main-nav">
-  <div class="nav-logo">钟轩 <span>|</span> 清华大学 本科生</div>
+<nav id="nav">
+  <a class="nav-logo" href="index.html">钟轩 <em>|</em> 清华大学</a>
   <ul class="nav-links">
-    <li><a href="#hero-section">首页</a></li>
-    <li><a href="#research">科研经历</a></li>
-    <li><a href="#publications">成果与文章</a></li>
-    <li><a href="#blog">设计与随笔</a></li>
-    <li><a href="#contact">联系</a></li>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="projects.html">科研经历</a></li>
+    <li><a href="awards.html">成果与荣誉</a></li>
+    <li><a href="blog.html">随笔与设计</a></li>
+    <li><a href="contact.html">联系</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="菜单">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hb"><span></span><span></span><span></span></button>
 </nav>
 
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#hero-section" onclick="closeMobile()">首页</a>
-  <a href="#research" onclick="closeMobile()">科研经历</a>
-  <a href="#publications" onclick="closeMobile()">成果与文章</a>
-  <a href="#blog" onclick="closeMobile()">设计与随笔</a>
-  <a href="#contact" onclick="closeMobile()">联系</a>
+<div class="mob-menu" id="mm">
+  <a href="index.html">首页</a>
+  <a href="projects.html">科研经历</a>
+  <a href="awards.html">成果与荣誉</a>
+  <a href="blog.html">随笔与设计</a>
+  <a href="contact.html">联系</a>
 </div>
 
 <div class="page">
 
-  <!-- ── HERO ── -->
-  <div id="hero-section">
-    <div class="hero-inner">
-      <div class="hero-left fade-in">
-        <h1 class="hero-name">钟轩</h1>
-        <p class="hero-sub">清华大学电机工程与应用电子技术系 &nbsp;|&nbsp; 本科生（2023级）</p>
-        <div class="tags">
-          <span class="tag">储能优化</span>
-          <span class="tag">AI for Power Systems</span>
-          <span class="tag">嵌入式系统</span>
-          <span class="tag">深度强化学习</span>
-          <span class="tag">电力市场</span>
-        </div>
-        <p class="hero-bio">
-          热爱科研，专注于AI与储能系统的交叉领域。目前已参与多项课题，涵盖动态可重构电池系统智能运营、储能运行优化与收益量化等方向，申请专利1项，论文在投1篇。致力于以数据驱动与智能优化技术，推动新型电力系统的高效运行。
-        </p>
-        <div class="hero-btns">
-          <a href="#" class="btn btn-primary">📄 查看简历</a>
-          <a href="#contact" class="btn btn-outline">✉️ 联系我</a>
-        </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="fi">
+      <div class="hero-eyebrow">Tsinghua University · EE 2023</div>
+      <h1 class="hero-name">钟轩</h1>
+      <p class="hero-sub">
+        清华大学电机工程与应用电子技术系<br>
+        电气工程及其自动化 · 2023级本科生
+      </p>
+      <div class="tags">
+        <span class="tag">储能优化</span>
+        <span class="tag">AI for Power Systems</span>
+        <span class="tag">嵌入式系统</span>
+        <span class="tag">MILP</span>
+        <span class="tag">LSTM · 深度强化学习</span>
       </div>
-      <div class="hero-right fade-in" style="transition-delay:.15s">
-        <div class="hero-photo-placeholder">🎓</div>
-        <p class="hero-motto">"软件定义能量，<br>数据驱动未来"</p>
+      <p class="hero-bio">
+        热爱科研，专注于 AI 与储能系统的交叉方向。已参与4项课题研究，涵盖动态可重构电池系统智能运营、储能热力学建模、跨气候带运行优化等，申请发明专利1项，论文在投1篇。同时担任班长，积极参与校园学生工作，三次获得奖学金。
+      </p>
+      <div class="hero-btns">
+        <a href="钟轩简历v6.pdf" class="btn btn-p" download>📄 下载简历</a>
+        <a href="contact.html" class="btn btn-o">✉️ 联系我</a>
+        <a href="projects.html" class="btn btn-o">🔬 查看科研</a>
       </div>
     </div>
-    <div class="social-row">
-      <a href="#" class="social-link"><div class="social-icon">⚙️</div>GitHub</a>
-      <a href="#" class="social-link"><div class="social-icon">💼</div>领英</a>
-      <a href="#" class="social-link"><div class="social-icon">💬</div>微信</a>
+    <div class="hero-right fi" style="transition-delay:.15s">
+      <div class="avatar-wrap">🎓</div>
+      <p class="motto">"软件定义能量，<br>数据驱动未来"</p>
     </div>
   </div>
+  <div class="social-bar">
+    <a href="#" class="soc-link"><div class="soc-icon">⚙️</div>GitHub</a>
+    <a href="#" class="soc-link"><div class="soc-icon">💼</div>领英</a>
+    <a href="mailto:zhong-x23@mails.tsinghua.edu.cn" class="soc-link"><div class="soc-icon">✉️</div>邮件</a>
+  </div>
+</div>
 
-  <!-- ── EDUCATION ── -->
-  <div id="education" style="background: var(--bg); border-bottom: 1px solid var(--border);">
-    <section class="fade-in">
-      <h2 class="section-title">教育背景</h2>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-n">4</div>
+      <div class="stat-l">科研项目</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">1</div>
+      <div class="stat-l">发明专利（受理）</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">1</div>
+      <div class="stat-l">论文在投</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">24<span style="font-size:1.2rem">/80</span></div>
+      <div class="stat-l">专业排名</div>
+    </div>
+  </div>
+</div>
+
+<!-- EDU -->
+<div style="background:var(--bg);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <section class="sec fi">
+      <h2 class="sec-title">教育背景</h2>
       <div class="edu-grid">
-        <div class="edu-card">
+        <div class="card edu-card">
+          <div class="edu-logo">🏫</div>
           <div class="edu-school">清华大学</div>
-          <div class="edu-dept">⚡ 电气工程及其自动化 &nbsp;|&nbsp; 2023.09 – 至今</div>
-          <div class="edu-item"><strong>GPA：</strong>3.63 / 4.0（专业排名前 30%）</div>
-          <div class="edu-item" style="flex-direction: column; gap: 4px;">
-            <strong>主修课程：</strong>
-            <span>自动控制原理 (4.0) · 信号与系统 (4.0) · 电力系统分析 · 电磁场 · 电机学 · 模拟电子技术基础</span>
+          <div class="edu-dept">电机工程与应用电子技术系 · 电气工程及其自动化</div>
+          <div class="edu-row"><strong>学制</strong>2023.09 — 至今（本科）</div>
+          <div class="edu-row"><strong>GPA</strong><span class="mono">3.629 / 4.0 &nbsp;·&nbsp; 专业第 24 名（共80人）</span></div>
+          <div class="edu-row" style="flex-direction:column;gap:4px">
+            <strong>主修课程</strong>
+            <span style="font-size:.8rem;line-height:1.7">
+              大学物理B1/B2 (4.0) · 自动控制原理-英 (4.0) · 电力电子技术双语 (3.6) · 
+              模拟电子技术基础 (3.6) · 微积分A (3.6) · 数字信号处理 · 
+              信号与系统 · 电机学 · 电磁场 · 电力系统分析 · 
+              单片机/嵌入式/软件编程项目训练
+            </span>
           </div>
         </div>
-        <div class="edu-card">
-          <div class="edu-school" style="margin-bottom: 16px;">能力概览</div>
-          <div class="skills-block">
-            <div class="skill-row">
-              <span class="skill-label">语言</span>
-              <span class="skill-tag">中文（母语）</span>
-              <span class="skill-tag">英语 CET-6</span>
-            </div>
-            <div class="skill-row">
-              <span class="skill-label">编程</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">MATLAB</span>
-              <span class="skill-tag">C</span>
-              <span class="skill-tag">Gurobi</span>
-            </div>
-            <div class="skill-row">
-              <span class="skill-label">嵌入式</span>
-              <span class="skill-tag">MSPM0</span>
-              <span class="skill-tag">DSP</span>
-            </div>
-            <div class="skill-row">
-              <span class="skill-label">AI / 优化</span>
-              <span class="skill-tag">LSTM</span>
-              <span class="skill-tag">DRL · PPO</span>
-              <span class="skill-tag">MILP</span>
-            </div>
+        <div class="card edu-card">
+          <div class="edu-logo" style="background:linear-gradient(135deg,#2E86AB,#54C6EB)">💡</div>
+          <div class="edu-school" style="margin-bottom:16px">技能概览</div>
+          <div class="sk-row">
+            <span class="sk-lbl">编程语言</span>
+            <span class="sk-chip">Python</span>
+            <span class="sk-chip">MATLAB</span>
+            <span class="sk-chip">C</span>
           </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ── RESEARCH ── -->
-  <div id="research" style="background: var(--card); border-bottom: 1px solid var(--border);">
-    <section class="fade-in">
-      <h2 class="section-title">科研经历</h2>
-      <div class="research-list">
-
-        <div class="r-card">
-          <div class="r-header">
-            <div class="r-title">动态可重构电池储能系统（DRBN）智能运营</div>
-            <span class="r-time">2025.09 – 至今</span>
+          <div class="sk-row">
+            <span class="sk-lbl">AI · 优化</span>
+            <span class="sk-chip">Gurobi / MILP</span>
+            <span class="sk-chip">LSTM</span>
+            <span class="sk-chip">DRL · PPO</span>
           </div>
-          <div class="r-group">慈松课题组</div>
-          <p class="r-desc">负责SOC-SOH协同预测算法研究，基于LSTM+注意力机制构建联合预测模型，实现电池状态的高精度实时估计。已申请发明专利1项，相关论文已投稿ACDC国际会议（在审）。</p>
-          <div class="r-tags">
-            <span class="r-tag">#深度强化学习</span>
-            <span class="r-tag">#LSTM</span>
-            <span class="r-tag">#注意力机制</span>
-            <span class="r-tag">#电池老化</span>
-            <span class="r-tag">#SOC-SOH</span>
+          <div class="sk-row">
+            <span class="sk-lbl">嵌入式</span>
+            <span class="sk-chip">MSPM0</span>
+            <span class="sk-chip">Q31定点</span>
+            <span class="sk-chip">FFT</span>
           </div>
-        </div>
-
-        <div class="r-card">
-          <div class="r-header">
-            <div class="r-title">计及环境物理特性的储能系统运行优化与收益量化</div>
-            <span class="r-time">2025.11 – 2026.03</span>
-          </div>
-          <div class="r-group">挑战杯项目</div>
-          <p class="r-desc">构建能量-温度协同优化MILP模型，综合考虑不同气候带下的热管理约束，实现跨气候带储能系统盈利能力评估与优化。项目获校赛优胜奖。</p>
-          <div class="r-tags">
-            <span class="r-tag">#MILP</span>
-            <span class="r-tag">#热管理</span>
-            <span class="r-tag">#电力市场</span>
-            <span class="r-tag">#温度协同优化</span>
-          </div>
-        </div>
-
-        <div class="r-card">
-          <div class="r-header">
-            <div class="r-title">TI杯数字系统创新设计大赛 – 音波解密赛道</div>
-            <span class="r-time">2025.03 – 2025.09</span>
-          </div>
-          <div class="r-group">队长</div>
-          <p class="r-desc">主导设计数字滤波器方案，在MSPM0单片机平台上以Q31定点数实现高效信号处理，解决浮点运算性能瓶颈，精度损失小于0.1%，最终获竞赛二等奖。</p>
-          <div class="r-tags">
-            <span class="r-tag">#嵌入式</span>
-            <span class="r-tag">#数字信号处理</span>
-            <span class="r-tag">#滤波器</span>
-            <span class="r-tag">#Q31定点</span>
-            <span class="r-tag">#MSPM0</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </div>
-
-  <!-- ── PUBLICATIONS ── -->
-  <div id="publications" style="background: var(--bg); border-bottom: 1px solid var(--border);">
-    <section class="fade-in">
-      <h2 class="section-title">学术成果</h2>
-      <div class="pub-grid">
-        <div class="pub-card">
-          <span class="pub-type">发明专利</span>
-          <p class="pub-title">一种SOC与SOH协同预测的方法及相关装置</p>
-          <p class="pub-meta">受理中 &nbsp;|&nbsp; 2026</p>
-        </div>
-        <div class="pub-card">
-          <span class="pub-type">会议论文</span>
-          <p class="pub-title">基于注意力机制和LSTM的SOC-SOH协同预测研究</p>
-          <p class="pub-meta">投稿 ACDC &nbsp;|&nbsp; 2026（在审）</p>
-        </div>
-      </div>
-      <p style="font-size:.8rem; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;">竞赛获奖</p>
-      <div class="awards-row">
-        <div class="award-chip">
-          <span class="aw-icon">🥈</span>
-          <div>
-            <div class="aw-name">TI杯数字系统创新设计大赛 二等奖</div>
-            <div class="aw-year">2025</div>
-          </div>
-        </div>
-        <div class="award-chip">
-          <span class="aw-icon">🏆</span>
-          <div>
-            <div class="aw-name">挑战杯 校赛优胜奖</div>
-            <div class="aw-year">2026</div>
-          </div>
-        </div>
-        <div class="award-chip">
-          <span class="aw-icon">🥉</span>
-          <div>
-            <div class="aw-name">TI杯一等奖</div>
-            <div class="aw-year">2024</div>
+          <div class="sk-row">
+            <span class="sk-lbl">语言</span>
+            <span class="sk-chip">中文（母语）</span>
+            <span class="sk-chip">英语 CET-6</span>
           </div>
         </div>
       </div>
     </section>
   </div>
+</div>
 
-  <!-- ── HONORS ── -->
-  <div id="honors" style="background: var(--card); border-bottom: 1px solid var(--border);">
-    <section class="fade-in">
-      <h2 class="section-title">获奖与荣誉</h2>
-      <div class="honor-grid">
-        <div class="honor-card">
-          <div class="honor-icon">🎖️</div>
-          <div class="honor-name">清华大学学业优秀奖学金</div>
-          <div class="honor-year">2024 · 2025</div>
-          <div class="honor-org">清华大学</div>
+<!-- RESEARCH PREVIEW -->
+<div style="background:var(--card);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <section class="sec fi">
+      <h2 class="sec-title">科研经历概览</h2>
+      <div class="preview-grid">
+        <div class="card prev-card">
+          <div class="prev-num">01</div>
+          <div class="prev-title">学推项目 — 动态可重构电池储能系统跨温域价值分析与智能运营技术</div>
+          <div class="prev-time">2026.04 — 至今</div>
         </div>
-        <div class="honor-card">
-          <div class="honor-icon">⭐</div>
-          <div class="honor-name">电机系优秀学生干部</div>
-          <div class="honor-year">2025</div>
-          <div class="honor-org">清华大学电机系</div>
+        <div class="card prev-card">
+          <div class="prev-num">02</div>
+          <div class="prev-title">SRT立项 — 面向电力市场的储能系统热力学特性建模与应用研究</div>
+          <div class="prev-time">2026.03 — 至今</div>
         </div>
-        <div class="honor-card">
-          <div class="honor-icon">🥈</div>
-          <div class="honor-name">TI杯数字系统创新设计大赛 二等奖</div>
-          <div class="honor-year">2025</div>
-          <div class="honor-org">德州仪器</div>
+        <div class="card prev-card">
+          <div class="prev-num">03</div>
+          <div class="prev-title">挑战杯 — 计及环境物理特性的储能系统运行优化与收益量化</div>
+          <div class="prev-time">2025.11 — 2026.03</div>
         </div>
-        <div class="honor-card">
-          <div class="honor-icon">🥉</div>
-          <div class="honor-name">TI杯数字系统创新设计大赛 一等奖</div>
-          <div class="honor-year">2024</div>
-          <div class="honor-org">德州仪器</div>
+        <div class="card prev-card">
+          <div class="prev-num">04</div>
+          <div class="prev-title">SRT项目 — 超高参数电站锅炉管道微裂纹萌生与扩展机制研究</div>
+          <div class="prev-time">2025.03 — 2025.09</div>
         </div>
-        <div class="honor-card">
-          <div class="honor-icon">🌾</div>
-          <div class="honor-name">乡村振兴实践支队 校级铜奖</div>
-          <div class="honor-year">2024 · 2026</div>
-          <div class="honor-org">清华大学</div>
-        </div>
-        <div class="honor-card">
-          <div class="honor-icon">🌟</div>
-          <div class="honor-name">乡村振兴实践支队 院系银奖</div>
-          <div class="honor-year">2024 · 2026</div>
-          <div class="honor-org">清华大学电机系</div>
-        </div>
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="projects.html" class="btn btn-p">查看全部科研详情 →</a>
       </div>
     </section>
   </div>
-
-  <!-- ── SKILLS ── -->
-  <div id="skills" style="background: var(--bg); border-bottom: 1px solid var(--border);">
-    <section class="fade-in skills-section">
-      <h2 class="section-title">技能与工具</h2>
-      <div class="skill-category">
-        <div class="skill-cat-title">编程语言</div>
-        <div class="skill-cloud">
-          <span class="skill-bubble">Python</span>
-          <span class="skill-bubble">MATLAB</span>
-          <span class="skill-bubble">C</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <div class="skill-cat-title">优化与 AI</div>
-        <div class="skill-cloud">
-          <span class="skill-bubble">Gurobi</span>
-          <span class="skill-bubble">MILP</span>
-          <span class="skill-bubble">深度强化学习 · PPO</span>
-          <span class="skill-bubble">LSTM</span>
-          <span class="skill-bubble">注意力机制</span>
-          <span class="skill-bubble">PyTorch</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <div class="skill-cat-title">嵌入式与信号处理</div>
-        <div class="skill-cloud">
-          <span class="skill-bubble">MSPM0</span>
-          <span class="skill-bubble">数字滤波器</span>
-          <span class="skill-bubble">小波变换</span>
-          <span class="skill-bubble">FFT</span>
-          <span class="skill-bubble">Q31定点运算</span>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ── BLOG ── -->
-  <div id="blog" style="background: var(--card); border-bottom: 1px solid var(--border);">
-    <section class="fade-in">
-      <h2 class="section-title">新闻与随笔</h2>
-      <div class="blog-tabs">
-        <button class="blog-tab active" onclick="switchTab(this,'all')">全部</button>
-        <button class="blog-tab" onclick="switchTab(this,'tech')">技术笔记</button>
-        <button class="blog-tab" onclick="switchTab(this,'design')">小设计</button>
-        <button class="blog-tab" onclick="switchTab(this,'news')">最近动态</button>
-      </div>
-      <div class="blog-grid">
-        <div class="blog-card" data-type="tech">
-          <div class="blog-emoji">📝</div>
-          <div class="blog-title">Q31定点数在MSPM0上的实现技巧</div>
-          <div class="blog-date">2026-04-15</div>
-          <p class="blog-excerpt">在TI杯项目中，我们遇到浮点运算慢的问题，改用Q31定点并配合64位累加，精度损失小于0.1%，大幅提升实时处理能力...</p>
-          <div class="blog-footer">
-            <span class="blog-tag">#嵌入式 #滤波器</span>
-            <a href="#" class="blog-more">阅读更多 →</a>
-          </div>
-        </div>
-        <div class="blog-card" data-type="design">
-          <div class="blog-emoji">🎨</div>
-          <div class="blog-title">储能系统收益可视化仪表盘</div>
-          <div class="blog-date">2026-03-20</div>
-          <p class="blog-excerpt">基于Dash搭建的交互式仪表盘，可动态展示不同气候带下的储能收益曲线，支持实时参数调整与对比分析...</p>
-          <div class="blog-footer">
-            <span class="blog-tag">#数据可视化 #Python</span>
-            <a href="#" class="blog-more">阅读更多 →</a>
-          </div>
-        </div>
-        <div class="blog-card" data-type="tech">
-          <div class="blog-emoji">🔋</div>
-          <div class="blog-title">LSTM+Attention在SOH预测中的工程落地</div>
-          <div class="blog-date">2026-02-08</div>
-          <p class="blog-excerpt">记录了从模型设计、数据预处理到嵌入式部署的完整流程，以及在实际电池数据上的调参经验与踩坑总结...</p>
-          <div class="blog-footer">
-            <span class="blog-tag">#深度学习 #电池</span>
-            <a href="#" class="blog-more">阅读更多 →</a>
-          </div>
-        </div>
-        <div class="blog-card" data-type="news">
-          <div class="blog-emoji">🏆</div>
-          <div class="blog-title">挑战杯校赛获优胜奖啦！</div>
-          <div class="blog-date">2026-03-10</div>
-          <p class="blog-excerpt">历时四个月的挑战杯项目顺利收官，储能优化课题获校赛优胜奖，感谢团队的每一位成员和指导老师...</p>
-          <div class="blog-footer">
-            <span class="blog-tag">#动态 #挑战杯</span>
-            <a href="#" class="blog-more">阅读更多 →</a>
-          </div>
-        </div>
-      </div>
-      <div class="load-more">
-        <button class="btn btn-outline" style="margin-top: 8px;">查看更多文章</button>
-      </div>
-    </section>
-  </div>
-
-  <!-- ── CONTACT ── -->
-  <div id="contact" style="background: var(--bg); border-bottom: 1px solid var(--border);">
-    <section class="fade-in">
-      <h2 class="section-title">联系我</h2>
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div class="contact-text">
-              <div class="contact-label">邮箱</div>
-              <div class="contact-value"><a href="mailto:zhong-x23@mails.tsinghua.edu.cn">zhong-x23@mails.tsinghua.edu.cn</a></div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📱</div>
-            <div class="contact-text">
-              <div class="contact-label">手机</div>
-              <div class="contact-value">15616901036</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">💬</div>
-            <div class="contact-text">
-              <div class="contact-label">微信</div>
-              <div class="contact-value">THU_Zxuan</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">⚙️</div>
-            <div class="contact-text">
-              <div class="contact-label">GitHub</div>
-              <div class="contact-value"><a href="#">github.com/zhongxuan</a></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p style="font-size:.85rem; color: var(--text-muted); margin-bottom: 18px;">欢迎科研合作、学术交流或实习机会洽谈，留下消息我会尽快回复！</p>
-          <div class="contact-form">
-            <div class="form-group">
-              <label class="form-label">姓名</label>
-              <input class="form-input" type="text" placeholder="请输入您的姓名">
-            </div>
-            <div class="form-group">
-              <label class="form-label">邮箱</label>
-              <input class="form-input" type="email" placeholder="请输入您的邮箱">
-            </div>
-            <div class="form-group">
-              <label class="form-label">留言</label>
-              <textarea class="form-input" placeholder="请输入您的留言..."></textarea>
-            </div>
-            <button class="form-submit">发送消息 ✉️</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+</div>
 
 </div><!-- /page -->
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
+  <div class="foot-inner">
     <div>
-      <div class="footer-copy">© 2026 <strong>钟轩</strong> · 基于个人兴趣设计</div>
-      <div class="footer-update" style="margin-top:4px;">最后更新：2026年4月</div>
+      <div class="foot-copy">© 2026 <strong>钟轩</strong> · 基于个人兴趣设计</div>
+      <div class="foot-update">最后更新：2026年4月</div>
     </div>
-    <div class="footer-social">
+    <div class="foot-links">
       <a href="#" title="GitHub">⚙️</a>
       <a href="#" title="领英">💼</a>
-      <a href="#" title="微信">💬</a>
+      <a href="mailto:zhong-x23@mails.tsinghua.edu.cn" title="Email">✉️</a>
     </div>
   </div>
 </footer>
 
-<script>
-  // NAV scroll
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-    highlightNav();
-  });
-
-  // Nav highlight
-  const sections = ['hero-section','research','publications','blog','contact'];
-  const navLinks = document.querySelectorAll('.nav-links a');
-  function highlightNav() {
-    let current = '';
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (window.scrollY >= el.parentElement.offsetTop - 80) current = id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  }
-
-  // Hamburger
-  const hb = document.getElementById('hamburger');
-  const mm = document.getElementById('mobile-menu');
-  hb.addEventListener('click', () => mm.classList.toggle('open'));
-  function closeMobile() { mm.classList.remove('open'); }
-
-  // Fade in on scroll
-  const faders = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  faders.forEach(el => observer.observe(el));
-
-  // Blog tabs
-  function switchTab(btn, type) {
-    document.querySelectorAll('.blog-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.blog-card').forEach(card => {
-      const show = type === 'all' || card.dataset.type === type;
-      card.style.display = show ? 'block' : 'none';
-    });
-  }
-</script>
-
+<script src="nav.js"></script>
 </body>
 </html>

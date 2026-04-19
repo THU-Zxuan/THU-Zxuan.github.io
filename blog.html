@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>随笔与设计 | 钟轩</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── BLOG TABS ── */
+.btabs{
+  display:flex;gap:4px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:36px;
+}
+.btab{
+  padding:9px 22px;background:none;
+  border:none;border-bottom:2px solid transparent;
+  font-size:.88rem;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all .2s;margin-bottom:-1px;
+  font-family:inherit;
+}
+.btab.on{color:var(--P);border-bottom-color:var(--P)}
+.btab:hover:not(.on){color:var(--txt)}
+
+/* ── BLOG GRID ── */
+.blog-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+.blog-card{padding:26px}
+.blog-emoji{font-size:1.4rem;margin-bottom:12px}
+.blog-cat{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--P);margin-bottom:8px;
+}
+.blog-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:.98rem;font-weight:700;color:var(--dark);
+  line-height:1.45;margin-bottom:8px;
+}
+.blog-date{
+  font-size:.74rem;color:var(--light);
+  font-family:'JetBrains Mono',monospace;margin-bottom:10px;
+}
+.blog-excerpt{
+  font-size:.84rem;color:var(--muted);
+  line-height:1.75;margin-bottom:16px;
+}
+.blog-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:8px;
+  padding-top:14px;border-top:1px solid var(--border);
+}
+.blog-tags{display:flex;gap:6px;flex-wrap:wrap}
+.blog-tag{
+  font-size:.7rem;color:var(--P2);
+  background:var(--Pp);border-radius:20px;
+  padding:2px 10px;font-weight:600;
+}
+.read-more{
+  font-size:.8rem;color:var(--P);font-weight:600;
+  text-decoration:none;transition:letter-spacing .2s;
+  display:flex;align-items:center;gap:4px;
+}
+.read-more:hover{letter-spacing:.02em}
+
+/* ── EMPTY STATE ── */
+.empty{
+  grid-column:1/-1;text-align:center;
+  padding:60px 20px;color:var(--muted);
+  font-size:.9rem;
+}
+.empty-icon{font-size:2.5rem;margin-bottom:12px}
+
+/* ── COMING SOON card ── */
+.cs-banner{
+  background:linear-gradient(135deg,var(--Pp),var(--Pp2));
+  border:1px dashed var(--P3);border-radius:var(--r);
+  padding:32px;text-align:center;margin-top:32px;
+}
+.cs-banner h3{
+  font-family:'Noto Serif SC',serif;
+  font-size:1.1rem;color:var(--P);margin-bottom:8px;
+}
+.cs-banner p{font-size:.85rem;color:var(--muted)}
+
+@media(max-width:700px){
+  .blog-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">钟轩 <em>|</em> 清华大学</a>
+  <ul class="nav-links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="projects.html">科研经历</a></li>
+    <li><a href="awards.html">成果与荣誉</a></li>
+    <li><a href="blog.html">随笔与设计</a></li>
+    <li><a href="contact.html">联系</a></li>
+  </ul>
+  <button class="hamburger" id="hb"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mm">
+  <a href="index.html">首页</a>
+  <a href="projects.html">科研经历</a>
+  <a href="awards.html">成果与荣誉</a>
+  <a href="blog.html">随笔与设计</a>
+  <a href="contact.html">联系</a>
+</div>
+
+<div class="page">
+
+<div class="page-banner">
+  <div class="page-banner-inner">
+    <div class="breadcrumb"><a href="index.html">首页</a> › 随笔与设计</div>
+    <h1>随笔与设计</h1>
+    <p>技术踩坑记录 · 科研心得 · 可视化小设计 · 生活随想</p>
+  </div>
+</div>
+
+<div style="background:var(--bg)">
+<div class="wrap">
+<section class="sec fi">
+
+  <div class="btabs">
+    <button class="btab on" onclick="blogFilter('all',this)">全部</button>
+    <button class="btab" onclick="blogFilter('tech',this)">技术笔记</button>
+    <button class="btab" onclick="blogFilter('design',this)">小设计</button>
+    <button class="btab" onclick="blogFilter('life',this)">科研随想</button>
+  </div>
+
+  <div class="blog-grid" id="blog-grid">
+
+    <div class="card blog-card" data-cat="tech">
+      <div class="blog-emoji">📝</div>
+      <div class="blog-cat">技术笔记</div>
+      <div class="blog-title">Q31定点数在MSPM0上的实现技巧 — TI杯踩坑记录</div>
+      <div class="blog-date">2026-04-15</div>
+      <p class="blog-excerpt">
+        在TI杯"音波解密"赛道项目中，我们发现MSPM0上浮点FIR滤波器无法满足实时性要求。本文记录了将滤波器改用Q31定点实现的全过程：数学推导、代码实现、64位累加器的使用，以及精度验证（误差 &lt; 0.1%）。
+      </p>
+      <div class="blog-foot">
+        <div class="blog-tags">
+          <span class="blog-tag">#嵌入式</span>
+          <span class="blog-tag">#滤波器</span>
+          <span class="blog-tag">#MSPM0</span>
+        </div>
+        <a href="#" class="read-more">阅读全文 →</a>
+      </div>
+    </div>
+
+    <div class="card blog-card" data-cat="design">
+      <div class="blog-emoji">🎨</div>
+      <div class="blog-cat">小设计</div>
+      <div class="blog-title">储能系统跨气候带收益可视化仪表盘</div>
+      <div class="blog-date">2026-03-20</div>
+      <p class="blog-excerpt">
+        基于Python Dash搭建的交互式可视化仪表盘，可动态展示寒带、温带、热带三种气候场景下储能系统的全生命周期收益曲线。支持参数实时调整，直观呈现温度对电池效率与寿命的影响。
+      </p>
+      <div class="blog-foot">
+        <div class="blog-tags">
+          <span class="blog-tag">#Dash</span>
+          <span class="blog-tag">#数据可视化</span>
+          <span class="blog-tag">#Python</span>
+        </div>
+        <a href="#" class="read-more">阅读全文 →</a>
+      </div>
+    </div>
+
+    <div class="card blog-card" data-cat="tech">
+      <div class="blog-emoji">🔋</div>
+      <div class="blog-cat">技术笔记</div>
+      <div class="blog-title">LSTM+Attention用于SOH预测的工程落地经验</div>
+      <div class="blog-date">2026-02-10</div>
+      <p class="blog-excerpt">
+        记录了从模型设计、数据预处理到模型训练调优的完整流程。重点分享：电池循环数据的特征工程方法、注意力权重的可解释性分析，以及在真实电池数据集上的验证结果。
+      </p>
+      <div class="blog-foot">
+        <div class="blog-tags">
+          <span class="blog-tag">#深度学习</span>
+          <span class="blog-tag">#电池</span>
+          <span class="blog-tag">#PyTorch</span>
+        </div>
+        <a href="#" class="read-more">阅读全文 →</a>
+      </div>
+    </div>
+
+    <div class="card blog-card" data-cat="life">
+      <div class="blog-emoji">💭</div>
+      <div class="blog-cat">科研随想</div>
+      <div class="blog-title">挑战杯收官 — 四个月储能优化课题复盘</div>
+      <div class="blog-date">2026-03-10</div>
+      <p class="blog-excerpt">
+        历时四个月的挑战杯项目顺利收官，获校赛优胜奖。本文复盘整个课题的研究历程：从最初的问题定义、MILP模型建立，到Gurobi求解调参，以及最后答辩展示，记录踩过的坑和学到的东西。
+      </p>
+      <div class="blog-foot">
+        <div class="blog-tags">
+          <span class="blog-tag">#挑战杯</span>
+          <span class="blog-tag">#科研复盘</span>
+        </div>
+        <a href="#" class="read-more">阅读全文 →</a>
+      </div>
+    </div>
+
+  </div><!-- /blog-grid -->
+
+  <div class="cs-banner fi" style="transition-delay:.2s">
+    <div style="font-size:2rem;margin-bottom:10px">✍️</div>
+    <h3>更多内容持续更新中……</h3>
+    <p>关注这个页面，我会不定期分享技术笔记、科研心得与一些小设计项目。</p>
+  </div>
+
+</section>
+</div>
+</div>
+
+</div><!-- /page -->
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-copy">© 2026 <strong>钟轩</strong> · 基于个人兴趣设计</div>
+      <div class="foot-update">最后更新：2026年4月</div>
+    </div>
+    <div class="foot-links">
+      <a href="#" title="GitHub">⚙️</a>
+      <a href="mailto:zhong-x23@mails.tsinghua.edu.cn" title="Email">✉️</a>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+function blogFilter(cat, btn){
+  document.querySelectorAll('.btab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const cards = document.querySelectorAll('.blog-card');
+  let visible = 0;
+  cards.forEach(c=>{
+    const show = cat==='all' || c.dataset.cat===cat;
+    c.style.display = show ? 'block' : 'none';
+    if(show) visible++;
+  });
+  // show empty state
+  let empty = document.getElementById('blog-empty');
+  if(visible===0 && !empty){
+    empty = document.createElement('div');
+    empty.id='blog-empty';
+    empty.className='empty';
+    empty.innerHTML='<div class="empty-icon">📭</div><div>该分类暂无文章，敬请期待</div>';
+    document.getElementById('blog-grid').appendChild(empty);
+  } else if(visible>0 && empty){
+    empty.remove();
+  }
+}
+</script>
+</body>
+</html>
